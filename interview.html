@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>면접 질문 생성기 · KENTECH Career Lab</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="nav-logo" href="index.html">⚡ KENTECH <span>Career Lab</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="interview.html" class="active">Interview</a></li>
+      <li><a href="career.html">Career</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <button class="dark-toggle" id="darkToggle" title="Toggle dark mode">🌙</button>
+    <button class="nav-hamburger" id="hamburger">☰</button>
+  </nav>
+
+  <main class="page-main">
+    <div class="page-header">
+      <h1>🎤 AI 면접 질문 생성기</h1>
+      <p>직무와 회사를 선택하면 AI가 맞춤형 면접 질문을 즉시 생성합니다.</p>
+    </div>
+
+    <div class="form-card">
+      <h2>📋 면접 정보 입력</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="jobField">에너지 직무 분야</label>
+          <select id="jobField" class="input-field">
+            <option value="">직무 선택</option>
+            <option value="신재생에너지 엔지니어">신재생에너지 엔지니어</option>
+            <option value="원자력 엔지니어">원자력 엔지니어</option>
+            <option value="전력계통 엔지니어">전력계통 엔지니어</option>
+            <option value="에너지 정책 연구원">에너지 정책 연구원</option>
+            <option value="배터리·ESS 개발자">배터리·ESS 개발자</option>
+            <option value="스마트그리드 엔지니어">스마트그리드 엔지니어</option>
+            <option value="수소에너지 연구원">수소에너지 연구원</option>
+            <option value="에너지 데이터 분석가">에너지 데이터 분석가</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="company">지원 기관</label>
+          <select id="company" class="input-field">
+            <option value="">기관 선택</option>
+            <optgroup label="공기업">
+              <option value="한국전력공사 (KEPCO)">한국전력공사 (KEPCO)</option>
+              <option value="한국가스공사 (KOGAS)">한국가스공사 (KOGAS)</option>
+              <option value="한국수력원자력">한국수력원자력</option>
+              <option value="한국에너지공단">한국에너지공단</option>
+            </optgroup>
+            <optgroup label="민간기업">
+              <option value="두산에너빌리티">두산에너빌리티</option>
+              <option value="현대에너지솔루션">현대에너지솔루션</option>
+              <option value="한화솔루션 큐셀">한화솔루션 큐셀</option>
+              <option value="SK E&S">SK E&S</option>
+              <option value="LG에너지솔루션">LG에너지솔루션</option>
+            </optgroup>
+            <optgroup label="연구소">
+              <option value="한국에너지기술연구원 (KIER)">한국에너지기술연구원 (KIER)</option>
+              <option value="한국원자력연구원 (KAERI)">한국원자력연구원 (KAERI)</option>
+              <option value="한국전기연구원 (KERI)">한국전기연구원 (KERI)</option>
+            </optgroup>
+            <optgroup label="대학원">
+              <option value="KAIST 대학원">KAIST 대학원</option>
+              <option value="포스텍 대학원">포스텍 대학원</option>
+              <option value="서울대학교 대학원">서울대학교 대학원</option>
+              <option value="해외 Ph.D. (MIT/Stanford 등)">해외 Ph.D. (MIT/Stanford 등)</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="interviewType">면접 유형</label>
+          <select id="interviewType" class="input-field">
+            <option value="기술+인성 혼합">기술 + 인성 혼합</option>
+            <option value="기술 면접 위주">기술 면접 위주</option>
+            <option value="인성 면접 위주">인성 면접 위주</option>
+            <option value="대학원 연구 면접">대학원 연구 면접</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="questionCount">질문 개수</label>
+          <select id="questionCount" class="input-field">
+            <option value="5">5개</option>
+            <option value="8" selected>8개</option>
+            <option value="10">10개</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:1.25rem;">
+        <label for="extraInfo">추가 정보 (선택)</label>
+        <textarea id="extraInfo" class="input-field" placeholder="e.g. 태양광 프로젝트 경험 있음, 졸업논문 주제는 에너지 저장 시스템..."></textarea>
+      </div>
+      <button class="btn btn-blue btn-full" id="generateBtn">⚡ AI 면접 질문 생성하기</button>
+    </div>
+
+    <!-- Loading -->
+    <div class="loading-box" id="loadingBox">
+      <div class="spinner"></div>
+      <p class="loading-text" id="loadingText">AI가 맞춤 면접 질문을 생성하는 중...</p>
+    </div>
+
+    <!-- Result -->
+    <div class="result-box" id="resultBox">
+      <h2>📝 생성된 면접 질문</h2>
+      <div class="question-list" id="questionList"></div>
+      <div style="margin-top:1.5rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+        <button class="btn btn-primary" id="regenerateBtn">🔄 다시 생성하기</button>
+        <button class="btn btn-ghost" id="copyBtn">📋 전체 복사</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>KENTECH Career Lab &copy; 2026 · Built for KENTECH students</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

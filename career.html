@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>진로 추천 · KENTECH Career Lab</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="nav-logo" href="index.html">⚡ KENTECH <span>Career Lab</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="interview.html">Interview</a></li>
+      <li><a href="career.html" class="active">Career</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <button class="dark-toggle" id="darkToggle" title="Toggle dark mode">🌙</button>
+    <button class="nav-hamburger" id="hamburger">☰</button>
+  </nav>
+
+  <main class="page-main">
+    <div class="page-header">
+      <h1>🧭 AI 진로 추천</h1>
+      <p>관심 분야와 선호 환경을 입력하면 AI가 최적의 진로 3가지를 추천해드립니다.</p>
+    </div>
+
+    <div class="form-card">
+      <h2>📋 나의 정보 입력</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="interest">관심 에너지 분야</label>
+          <select id="interest" class="input-field">
+            <option value="">분야 선택</option>
+            <option value="신재생에너지 (태양광·풍력)">신재생에너지 (태양광·풍력)</option>
+            <option value="원자력 에너지">원자력 에너지</option>
+            <option value="수소 에너지">수소 에너지</option>
+            <option value="에너지 저장 (배터리·ESS)">에너지 저장 (배터리·ESS)</option>
+            <option value="스마트그리드·전력계통">스마트그리드·전력계통</option>
+            <option value="에너지 정책·경제">에너지 정책·경제</option>
+            <option value="탄소중립·기후변화">탄소중립·기후변화</option>
+            <option value="에너지 AI·데이터">에너지 AI·데이터</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="grade">학년</label>
+          <select id="grade" class="input-field">
+            <option value="1학년">1학년</option>
+            <option value="2학년">2학년</option>
+            <option value="3학년">3학년</option>
+            <option value="4학년">4학년</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="workStyle">선호 근무 환경</label>
+          <select id="workStyle" class="input-field">
+            <option value="">선택</option>
+            <option value="안정적인 공기업">안정적인 공기업</option>
+            <option value="도전적인 민간 대기업">도전적인 민간 대기업</option>
+            <option value="자유로운 스타트업">자유로운 스타트업</option>
+            <option value="깊이있는 연구 (연구소)">깊이있는 연구 (연구소)</option>
+            <option value="학문적 연구 (대학원)">학문적 연구 (대학원)</option>
+            <option value="해외 취업·유학">해외 취업·유학</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="strength">나의 강점</label>
+          <select id="strength" class="input-field">
+            <option value="">선택</option>
+            <option value="수학·물리 이론">수학·물리 이론</option>
+            <option value="프로그래밍·데이터분석">프로그래밍·데이터분석</option>
+            <option value="실험·하드웨어">실험·하드웨어</option>
+            <option value="발표·커뮤니케이션">발표·커뮤니케이션</option>
+            <option value="논문 읽기·연구">논문 읽기·연구</option>
+            <option value="기획·문서 작성">기획·문서 작성</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:1.25rem;">
+        <label for="additionalInfo">추가 고민이나 조건 (선택)</label>
+        <textarea id="additionalInfo" class="input-field" placeholder="e.g. 석사 후 취업 고민 중, 해외 경험 희망, 워라밸 중요..."></textarea>
+      </div>
+      <button class="btn btn-blue btn-full" id="recommendBtn">🧭 AI 진로 추천받기</button>
+    </div>
+
+    <!-- Loading -->
+    <div class="loading-box" id="loadingBox">
+      <div class="spinner"></div>
+      <p class="loading-text" id="loadingText">AI가 맞춤 진로를 분석하는 중...</p>
+    </div>
+
+    <!-- Result -->
+    <div class="result-box" id="resultBox">
+      <h2>🎯 맞춤 진로 추천 결과</h2>
+      <div class="career-cards" id="careerCards"></div>
+      <div style="margin-top:1.5rem;">
+        <button class="btn btn-primary" id="retryBtn">🔄 다시 추천받기</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>KENTECH Career Lab &copy; 2026 · Built for KENTECH students</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
